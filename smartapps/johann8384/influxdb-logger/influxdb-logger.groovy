@@ -31,7 +31,7 @@
  *****************************************************************************************************************/
 definition(
     name: "InfluxDB Logger",
-    namespace: "webdes03",
+    namespace: "johann8384",
     author: "David Lomas (codersaur)",
     description: "Log SmartThings device states to InfluxDB",
     category: "My Apps",
@@ -62,15 +62,16 @@ preferences {
     }
 
     section ("InfluxDB Database:") {
-        input "prefDatabaseHost", "text", title: "Host", defaultValue: "10.10.10.10", required: true
+        input "prefDatabaseHost", "text", title: "Host", defaultValue: "192.168.1.150", required: true
         input "prefDatabasePort", "text", title: "Port", defaultValue: "8086", required: true
-        input "prefDatabaseName", "text", title: "Database Name", defaultValue: "", required: true
-        input "prefDatabaseUser", "text", title: "Username", required: false
-        input "prefDatabasePass", "text", title: "Password", required: false
+        input "prefDatabaseName", "text", title: "Database Name", defaultValue: "smartthings", required: true
+        input "prefDatabaseUser", "text", title: "Username", required:true
+        input "prefDatabasePass", "text", title: "Password", required: true
     }
     
     section("Polling:") {
         input "prefSoftPollingInterval", "number", title:"Soft-Polling interval (minutes)", defaultValue: 10, required: true
+    }
     }
     
     section("System Monitoring:") {
@@ -791,15 +792,8 @@ private getGroupName(id) {
 
     if (id == null) {return 'Home'}
     // each group should be added after this line
-    else if (id == '3ec7ccae-dd35-4111-a27f-d57569e4a67d') {return 'Exterior'}
-    else if (id == '08cb9375-cda0-4506-86c0-7f256b3fa174') {return 'Kitchen'}
-    else if (id == '316da156-9bd0-46a6-b5d4-1c36503930ab') {return 'Dining Room'}
-    else if (id == '40cf3ca5-a8c0-48d7-aa29-934e8fe46e21') {return 'Office'}
-    else if (id == '833810f2-9593-495a-861a-82b872eaa32e') {return 'Living Room'}
-    else if (id == 'aad4fbb7-7bfe-4861-a62d-dcb65823ace3') {return 'Attic'}
-    else if (id == 'd07a7b55-6148-47fb-92b2-8ffe961266df') {return 'Garage'}
-    else if (id == 'dfe86a76-54cd-47ae-9980-15d254e6cb37') {return 'Master Bedroom'}
-    else if (id == 'fd1a5930-f28d-44b4-b41e-9ed7312fff52') {return 'Study'}
+    else if (id == 'c472d3c1-8b2d-4cf1-a17e-7a104187afcc') {return 'Downstairs'}
+    else if (id == '147d64a8-e652-48a7-a15a-c10af8b43fd3') {return 'Master Bedroom'}
     // do not edit after this line
     else {return 'Unknown'}    
 }
